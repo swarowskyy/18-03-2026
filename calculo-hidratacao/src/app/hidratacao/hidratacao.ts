@@ -28,7 +28,7 @@ export class HidratacaoComponent {
     const { peso, atividade } = this.form.value;
     let multiplicador = 1.0;
 
-    // Aplicação dos multiplicadores conforme a atividade
+    // Aplicação dos multiplicadores
     switch (atividade) {
       case 'moderado':
         multiplicador = 1.2;
@@ -42,7 +42,7 @@ export class HidratacaoComponent {
         break;
     }
 
-    // Cálculo da lógica de negócio
+    // lógica de negócio
     const necessidadeMl = peso / 35 * multiplicador;
     
     // Conversões e arredondamentos

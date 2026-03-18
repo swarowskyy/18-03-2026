@@ -1,12 +1,11 @@
-<section class="hidratacao-container" style="max-width: 500px; margin: auto; font-family: sans-serif;">
-    <h2>Calculadora de Hidratação Inteligente 💧</h2>
-    <form [formGroup]="form" (ngSubmit)="calcularMetas()">
-        <div style="margin-bottom: 15px;">
-            <label for="peso"><strong>Seu Peso (kg):</strong></label><br>
-            <input id="peso" type="number" formControlName="peso" placeholder="Ex: 70"
-                style="width: 100%; padding: 8px; margin-top: 5px;" />
-                </div>
-                <button (click)="calcularMetas()">Calcular</button>
+<h1>Calculando sua Hidratação!🫗
+<input type="number" [(ngModel)]="peso" placeholder="Peso (Kg)" required>
+<input type="text" [(ngModel)]="atividade" placeholder="Sedentário, Moderado, Intenso">
+<button (click)="calcularIMC()">Calcular</button>
+<div *ngIf="hidratação > 0">
+  <p>você deve ingerir:{{conclusao | number:`1.1-1` }}</p>
+  <p>Situação:<strong>{{ resultado }}</strong></p>
+</div>
           
             
         
