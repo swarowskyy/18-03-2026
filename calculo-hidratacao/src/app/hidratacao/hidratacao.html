@@ -1,8 +1,26 @@
-<h1>Calculando sua hidratação</h1>
-<input type="number" [(ngModel)]="peso" placeholder="Peso (Kg)" required>
-<input type="string" [(ngModel)]="atividade" placeholder="Sua atividade física é? (Sedentário,Moderado,Intenso)">
-<button (click)="calcularHidratacao()">Calcular</button>
-<div *ngIf="peso > 0">
-  <p>Seu resultado é: {{ resultado  }}</p>
-  <p>Ou seja <strong>{{ resultado2 | number: '1' }}</strong></p>
+<div class="card-calculadora">
+  <h1>Calculadora de Hidratação 🫗</h1>
+
+  <div class="grupo-input">
+    <label for="peso">Qual é o seu peso?</label>
+    <input type="number" id="peso" [(ngModel)]="peso" placeholder="Ex: 70" required>
+  </div>
+
+  <div class="grupo-input">
+    <label for="atividade-fisica">Qual o seu nível de atividade?🏃‍♂️🏃‍♀️</label>
+    <select id="atividade-fisica" [(ngModel)]="atividade" class="meu-select">
+      <option value="" disabled selected>Selecione uma opção...</option>
+      <option value="sedentario">Sedentário (Faço pouco ou nenhum exercício)</option>
+      <option value="moderado">Moderado (faço exercício 3-5 dias/semana)</option>
+      <option value="intenso">Intenso ( Sou atleta ou trabalho pesado)</option>
+    </select>
+  </div>
+
+  <button class="btn-principal" (click)="calcularHidratacao()">Calcular</button>
+
+  <div class="area-resultado" *ngIf="peso > 0 && conclusao > 0">
+    <p>O seu resultado é:</p>
+    <div class="destaque">{{ Math.ceil(conclusao) }} ml de água</div>
+    <p class="subtexto">Ou seja, cerca de <strong>{{ Math.ceil(conclusao2) }}</strong> garrafas de 500ml.</p>
+  </div>
 </div>

@@ -1,0 +1,108 @@
+/* Variáveis de Estilo */
+:host {
+  --primaria: #00a8ff;
+  --primaria-hover: #008cd4;
+  --fundo-card: #ffffff;
+  --texto-cor: #2f3640;
+  --borda-cor: #dcdde1;
+  --sombra: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Container do Card */
+.card-calculadora {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--fundo-card);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto-cor);
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: var(--primaria);
+  font-weight: 700;
+}
+
+/* Estrutura dos Inputs */
+.grupo-input {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input[type="number"],
+.meu-select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--borda-cor);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Garante que o padding não quebre a largura */
+}
+
+input:focus,
+.meu-select:focus {
+  outline: none;
+  border-color: var(--primaria);
+}
+
+/* Botão */
+.btn-principal {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primaria);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s transform 0.2s;
+  margin-top: 10px;
+}
+
+.btn-principal:hover {
+  background-color: var(--primaria-hover);
+}
+
+.btn-principal:active {
+  transform: scale(0.98);
+}
+
+/* Área de Resultado */
+.area-resultado {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda-cor);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.destaque {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primaria);
+  margin: 10px 0;
+}
+
+.subtexto {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Animação suave para o resultado */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
