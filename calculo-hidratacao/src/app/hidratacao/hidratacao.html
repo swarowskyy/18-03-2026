@@ -1,16 +1,12 @@
 <section class="hidratacao-container" style="max-width: 500px; margin: auto; font-family: sans-serif;">
-  <h2>Calculadora de Hidratação Inteligente 💧</h2>
-  <form [formGroup]="form" (ngSubmit)="calcularMetas()">
-    <div style="margin-bottom: 15px;">
-      <label for="peso"><strong>Seu Peso (kg):</strong></label><br>
-      <input 
-        id="peso" 
-        type="number" 
-        formControlName="peso" 
-        placeholder="Ex: 70" 
-        style="width: 100%; padding: 8px; margin-top: 5px;"
-      />
-      <span *ngIf="form.get('peso')?.invalid && form.get('peso')?.touched">
-        Por favor, insira um peso válido.
-      </span>
-    </div>
+    <h2>Calculadora de Hidratação Inteligente 💧</h2>
+    <form [formGroup]="form" (ngSubmit)="calcularMetas()">
+        <div style="margin-bottom: 15px;">
+            <label for="peso"><strong>Seu Peso (kg):</strong></label><br>
+            <input id="peso" type="number" formControlName="peso" placeholder="Ex: 70"
+                style="width: 100%; padding: 8px; margin-top: 5px;" />
+                </div>
+                <button (click)="calcularMetas()">Calcular</button>
+          
+            
+        
