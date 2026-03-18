@@ -1,11 +1,8 @@
-<h1>Calculando sua Hidratação!🫗
+<h1>Calculando sua hidratação</h1>
 <input type="number" [(ngModel)]="peso" placeholder="Peso (Kg)" required>
-<input type="text" [(ngModel)]="atividade" placeholder="Sedentário, Moderado, Intenso">
-<button (click)="calcularIMC()">Calcular</button>
-<div *ngIf="hidratação > 0">
-  <p>você deve ingerir:{{conclusao | number:`1.1-1` }}</p>
-  <p>Situação:<strong>{{ resultado }}</strong></p>
+<input type="string" [(ngModel)]="atividade" placeholder="Sua atividade física é? (Sedentário,Moderado,Intenso)">
+<button (click)="calcularHidratacao()">Calcular</button>
+<div *ngIf="peso > 0">
+  <p>Seu resultado é: {{ resultado  }}</p>
+  <p>Ou seja <strong>{{ resultado2 | number: '1' }}</strong></p>
 </div>
-          
-            
-        

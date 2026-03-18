@@ -1,53 +1,41 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-hidratacao',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './hidratacao.html'
+  imports: [FormsModule,CommonModule],
+  templateUrl: './hidratacao.html',
+  styleUrl: './hidratacao.css',
 })
-export class HidratacaoComponent {
-  form: FormGroup;
-  litrosCalculados: number = 0;
-  garrafasNecessarias: number = 0;
-  calculoFeito: boolean = false;
-
-  constructor(private fb: FormBuilder) {
-    // Inicialização do formulário reativo
-    this.form = this.fb.group({
-      peso: ['', [Validators.required, Validators.min(10)]],
-      atividade: ['sedentario', Validators.required]
-    });
-  }
-
-  calcularMetas(): void {
-    if (this.form.invalid) return;
-
-    const { peso, atividade } = this.form.value;
-    let multiplicador = 1.0;
-
-    // Aplicação dos multiplicadores
-    switch (atividade) {
-      case 'moderado':
-        multiplicador = 1.2;
-        break;
-      case 'intenso':
-        multiplicador = 1.5;
-        break;
-      case 'sedentario':
-      default:
-        multiplicador = 1.0;
-        break;
+export class Hidratacao {
+   peso: number = 0;
+  atividade: String = '';
+  necessidade: number = 0;
+  resultado: String = '';
+  conclusao: number = 0;
+  conclusao2: number = 0;
+  resultado2: string= '';
+  calcularHidratacao() {
+    if(this.peso>0 && this.atividade>''){
+    this.necessidade = this.peso /35;
+    if (this.atividade == 'Sedentário' || 'sedentário' ) {
+      this.conclusao = this.necessidade*1
+      this.resultado = this.conclusao+ " ml de água.";
+      this.conclusao2 = this.conclusao/500
+      this.resultado2 = this.conclusao2+" garafas de água."
+    } else if (this.atividade == 'Moderado' || 'moderado' ) {
+      this.conclusao = this.necessidade*1.2
+      this.resultado = this.conclusao+ " ml de água.";
+      this.conclusao2 = this.conclusao/500
+      this.resultado2 = this.conclusao2+" garafas de água."
     }
-
-    // lógica de negócio
-    const necessidadeMl = peso / 35 * multiplicador;
-    
-    // Conversões e arredondamentos
-    this.litrosCalculados = necessidadeMl / 1000;
-    this.garrafasNecessarias = Math.ceil(necessidadeMl / 500);
-    this.calculoFeito = true;
+    } else if (this.atividade == 'Intenso' || 'intenso' ) {
+      this.conclusao = this.necessidade*1.5
+      this.resultado = this.conclusao+ " ml de água.";
+      this.conclusao2 = this.conclusao/500
+      this.resultado2 = this.conclusao2+" garafas de água."
+    }  else {
+      this.resultado = "informações nao validas.";
+    }
   }
-}
+  }
